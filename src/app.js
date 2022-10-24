@@ -10,6 +10,7 @@ console.log(__dirname)
 console.log(path.join(__dirname, "../public"))
 
 const app = express()
+const port = process.env.PORT || 3000
 
 // Define paths for express config
 const publicDirectoryPath = path.join(__dirname, "../public")
@@ -52,7 +53,6 @@ app.get("/weather", (req,res)=>{
             error: "It is no address"
         })
     }   
-
 /*     geocode(req.query.address,(error,{ latitude, longitude, location}) => {
         if(error) {
             return res.send({error})
@@ -62,7 +62,6 @@ app.get("/weather", (req,res)=>{
         if(error) {
             return res.send({error})
         }
-
         res.send({
             forecast: forecastData.data,
             country: forecastData.country,
@@ -106,6 +105,6 @@ app.get("*",(req, res)=>{
     })
 })
 
-app.listen(3000, () =>{
-    console.log("Server is up on port 3000")
+app.listen(port, () =>{
+    console.log("Server is up on port " + port)
 } )  
